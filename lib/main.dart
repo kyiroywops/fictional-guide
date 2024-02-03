@@ -1,20 +1,28 @@
-import 'package:flutter/material.dart';
+// importar
 
-void main() {
-  runApp(const MainApp());
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:upordown/config/router/app_router.dart';
+import 'package:upordown/config/theme/theme.dart';
+
+Future<void> main() async {
+  runApp(const ProviderScope(
+    child: MyApp(),
+  ));
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp.router(
+     debugShowCheckedModeBanner: false,
+     routerConfig: appRouter,
+     theme: AppTheme().themeData,
     );
   }
 }
